@@ -405,7 +405,9 @@ export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) 
               </button>
               <button
                 type="button"
-                onClick={signInWithGoogle}
+                onClick={() => {
+                  void signInWithGoogle();
+                }}
                 className="font-semibold text-[#24D6A0] hover:underline whitespace-nowrap"
               >
                 Sign in with Google

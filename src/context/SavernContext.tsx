@@ -75,7 +75,7 @@ interface SavernContextValue {
   toasts: ToastMessage[];
   showToast: (title: string, variant?: ToastMessage['variant'], description?: string) => void;
   dismissToast: (id: string) => void;
-  signInWithGoogle: () => Promise<void>;
+  signInWithGoogle: () => Promise<boolean>;
   enterDemoMode: () => void;
   exitDemoMode: () => void;
   resetDemoData: () => Promise<void>;
@@ -322,16 +322,37 @@ export const SavernProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     return () => clearInterval(timer);
   }, [data.userPreferences, workspaceKey, showToast]);
 
-  const signInWithGoogle = useCallback(async () => {
+  const signInWithGoogle = useCallback(async (): Promise<boolean> => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
       setIsDemoMode(false);
       localStorage.setItem('savern_mode', 'auth');
       showToast(`Signed in as ${result.user.displayName || result.user.email}`, 'success');
-    } catch (err) {
+      return true;
+    } catch (err: unknown) {
+      const code =
+        typeof err === 'object' && err !== null && 'code' in err
+          ? String((err as { code?: unknown }).code || '')
+          : '';
+      if (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') {
+        showToast(
+          'Sign-in cancelled',
+          'info',
+          'The Google sign-in window was closed before completing authentication.'
+        );
+        return false;
+      }
+      if (code === 'auth/popup-blocked') {
+        showToast(
+          'Popup blocked by browser',
+          'warning',
+          'Please allow popups for this site and click Sign in with Google again.'
+        );
+        return false;
+      }
       const msg = err instanceof Error ? err.message : 'Google Sign-In failed';
       showToast('Authentication failed', 'error', msg);
-      throw err;
+      return false;
     }
   }, [showToast]);
 

@@ -14,14 +14,14 @@ export const LoginPage: React.FC = () => {
     setLoading(true);
     setError('');
     try {
-      await signInWithGoogle();
-      navigate('/');
-    } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : 'Google Sign-In could not complete. Verify popups are allowed for this window.'
-      );
+      const ok = await signInWithGoogle();
+      if (ok) {
+        navigate('/');
+      } else {
+        setError(
+          'Google Sign-In did not complete. Verify popups are allowed for this window and try again.'
+        );
+      }
     } finally {
       setLoading(false);
     }
