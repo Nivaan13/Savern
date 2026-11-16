@@ -1,0 +1,373 @@
+{
+  "entities": {
+    "UserPrivateProfile": {
+      "title": "UserPrivateProfile",
+      "description": "Private user identity and PII stored under users/{userId}/private/profile.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "email": { "type": "string", "minLength": 3, "maxLength": 254 },
+        "displayName": { "type": "string", "minLength": 0, "maxLength": 120 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "createdAt", "updatedAt"]
+    },
+    "UserPreferences": {
+      "title": "UserPreferences",
+      "description": "User regional, notification, and layout preferences.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 8 },
+        "timezone": { "type": "string", "minLength": 2, "maxLength": 64 },
+        "dateFormat": { "type": "string", "minLength": 4, "maxLength": 24 },
+        "numberFormat": { "type": "string", "minLength": 2, "maxLength": 16 },
+        "onboardingCompleted": { "type": "boolean" },
+        "dailyReminderEnabled": { "type": "boolean" },
+        "dailyReminderTime": { "type": "string", "minLength": 4, "maxLength": 8 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "currency", "timezone", "version", "createdAt", "updatedAt"]
+    },
+    "Account": {
+      "title": "Account",
+      "description": "Manually tracked cash, savings, current, or other financial account.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "type": { "type": "string", "enum": ["cash", "savings", "current", "other"] },
+        "openingBalance": { "type": "number" },
+        "currency": { "type": "string", "minLength": 3, "maxLength": 8 },
+        "description": { "type": "string", "maxLength": 300 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "type", "openingBalance", "currency", "version", "createdAt", "updatedAt"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Income, expense, internal transfer, or balance reconciliation record.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "type": { "type": "string", "enum": ["income", "expense", "transfer", "adjustment"] },
+        "amount": { "type": "number" },
+        "description": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "category": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "accountId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "date": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "paymentMethod": { "type": "string", "minLength": 1, "maxLength": 32 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "type", "amount", "description", "category", "accountId", "date", "version", "createdAt", "updatedAt"]
+    },
+    "Budget": {
+      "title": "Budget",
+      "description": "Monthly overall or category spending budget with threshold alerts.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "monthKey": { "type": "string", "minLength": 7, "maxLength": 7 },
+        "category": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "limitAmount": { "type": "number" },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "monthKey", "category", "limitAmount", "version", "createdAt", "updatedAt"]
+    },
+    "SavingsGoal": {
+      "title": "SavingsGoal",
+      "description": "Dream purchase or emergency fund savings target.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "targetAmount": { "type": "number" },
+        "initialSavedAmount": { "type": "number" },
+        "targetDate": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "category": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "priority": { "type": "string", "enum": ["low", "medium", "high"] },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "targetAmount", "targetDate", "category", "version", "createdAt", "updatedAt"]
+    },
+    "SavingsContribution": {
+      "title": "SavingsContribution",
+      "description": "Contribution audit record for a savings goal.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "goalId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "amount": { "type": "number" },
+        "date": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "goalId", "amount", "date", "version", "createdAt", "updatedAt"]
+    },
+    "Loan": {
+      "title": "Loan",
+      "description": "Borrowed, lent, or formal loan record.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "direction": { "type": "string", "enum": ["borrowed", "lent", "formal"] },
+        "counterpartyName": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "principalAmount": { "type": "number" },
+        "dueDate": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "direction", "counterpartyName", "title", "principalAmount", "dueDate", "version", "createdAt", "updatedAt"]
+    },
+    "LoanPayment": {
+      "title": "LoanPayment",
+      "description": "Repayment entry for a loan.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "loanId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "amount": { "type": "number" },
+        "principalPortion": { "type": "number" },
+        "date": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "loanId", "amount", "principalPortion", "date", "version", "createdAt", "updatedAt"]
+    },
+    "EmiPlan": {
+      "title": "EmiPlan",
+      "description": "Equated Monthly Installment schedule.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "loanName": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "lender": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "principalAmount": { "type": "number" },
+        "emiAmount": { "type": "number" },
+        "nextPaymentDate": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "loanName", "lender", "principalAmount", "emiAmount", "nextPaymentDate", "version", "createdAt", "updatedAt"]
+    },
+    "EmiPayment": {
+      "title": "EmiPayment",
+      "description": "Individual EMI installment record.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "emiPlanId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "date": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["upcoming", "paid", "overdue", "skipped"] },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "emiPlanId", "date", "amount", "status", "version", "createdAt", "updatedAt"]
+    },
+    "InsurancePolicy": {
+      "title": "InsurancePolicy",
+      "description": "Medical insurance policy metadata with masked policy number.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "company": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "policyName": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "policyNumberMasked": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "sumInsured": { "type": "number" },
+        "renewalDate": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "company", "policyName", "policyNumberMasked", "sumInsured", "renewalDate", "version", "createdAt", "updatedAt"]
+    },
+    "MedicalClaim": {
+      "title": "MedicalClaim",
+      "description": "Medical claim tracking coverage vs reimbursement amounts.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "policyId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 140 },
+        "hospital": { "type": "string", "minLength": 1, "maxLength": 140 },
+        "amountClaimed": { "type": "number" },
+        "status": { "type": "string", "enum": ["draft", "submitted", "under_review", "approved", "partially_approved", "rejected", "reimbursement_received"] },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "policyId", "title", "hospital", "amountClaimed", "status", "version", "createdAt", "updatedAt"]
+    },
+    "Investment": {
+      "title": "Investment",
+      "description": "Mutual fund holding tracked manually by units and NAV.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "fundName": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "amc": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "investedAmount": { "type": "number" },
+        "units": { "type": "number" },
+        "currentNav": { "type": "number" },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "fundName", "amc", "investedAmount", "units", "currentNav", "version", "createdAt", "updatedAt"]
+    },
+    "SipPlan": {
+      "title": "SipPlan",
+      "description": "Systematic Investment Plan schedule and commitment tracker.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "sipName": { "type": "string", "minLength": 1, "maxLength": 140 },
+        "fundId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "monthlyAmount": { "type": "number" },
+        "nextInstallmentDate": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "status": { "type": "string", "enum": ["active", "paused"] },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "sipName", "fundId", "monthlyAmount", "nextInstallmentDate", "status", "version", "createdAt", "updatedAt"]
+    },
+    "RecurringTransaction": {
+      "title": "RecurringTransaction",
+      "description": "Recurring income or expense template.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "type": { "type": "string", "enum": ["income", "expense"] },
+        "amount": { "type": "number" },
+        "description": { "type": "string", "minLength": 1, "maxLength": 200 },
+        "frequency": { "type": "string", "enum": ["daily", "weekly", "monthly", "yearly", "custom"] },
+        "nextDate": { "type": "string", "minLength": 10, "maxLength": 10 },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "type", "amount", "description", "frequency", "nextDate", "version", "createdAt", "updatedAt"]
+    },
+    "NotificationItem": {
+      "title": "NotificationItem",
+      "description": "In-app alert and reminder history item.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "userId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "kind": { "type": "string", "minLength": 1, "maxLength": 32 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 140 },
+        "message": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "isRead": { "type": "boolean" },
+        "version": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "kind", "title", "message", "isRead", "version", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/private/{docId}": {
+      "schema": { "$ref": "#/entities/UserPrivateProfile" },
+      "description": "Isolated PII document for authenticated user profile."
+    },
+    "/users/{userId}/preferences/{prefId}": {
+      "schema": { "$ref": "#/entities/UserPreferences" },
+      "description": "User regional, reminder, and UI preferences."
+    },
+    "/users/{userId}/accounts/{accountId}": {
+      "schema": { "$ref": "#/entities/Account" },
+      "description": "User manually tracked financial accounts."
+    },
+    "/users/{userId}/transactions/{transactionId}": {
+      "schema": { "$ref": "#/entities/Transaction" },
+      "description": "User income, expense, transfer, and reconciliation transactions."
+    },
+    "/users/{userId}/budgets/{budgetId}": {
+      "schema": { "$ref": "#/entities/Budget" },
+      "description": "User monthly overall and category budgets."
+    },
+    "/users/{userId}/savings_goals/{goalId}": {
+      "schema": { "$ref": "#/entities/SavingsGoal" },
+      "description": "User dream savings goals."
+    },
+    "/users/{userId}/savings_contributions/{contribId}": {
+      "schema": { "$ref": "#/entities/SavingsContribution" },
+      "description": "User savings goal contribution entries."
+    },
+    "/users/{userId}/loans/{loanId}": {
+      "schema": { "$ref": "#/entities/Loan" },
+      "description": "User borrowed, lent, and formal loan records."
+    },
+    "/users/{userId}/loan_payments/{paymentId}": {
+      "schema": { "$ref": "#/entities/LoanPayment" },
+      "description": "User loan repayment entries."
+    },
+    "/users/{userId}/emi_plans/{planId}": {
+      "schema": { "$ref": "#/entities/EmiPlan" },
+      "description": "User EMI schedules."
+    },
+    "/users/{userId}/emi_payments/{paymentId}": {
+      "schema": { "$ref": "#/entities/EmiPayment" },
+      "description": "User EMI installment records."
+    },
+    "/users/{userId}/insurance_policies/{policyId}": {
+      "schema": { "$ref": "#/entities/InsurancePolicy" },
+      "description": "User medical insurance policies."
+    },
+    "/users/{userId}/medical_claims/{claimId}": {
+      "schema": { "$ref": "#/entities/MedicalClaim" },
+      "description": "User medical insurance claims."
+    },
+    "/users/{userId}/investments/{investmentId}": {
+      "schema": { "$ref": "#/entities/Investment" },
+      "description": "User mutual fund holdings."
+    },
+    "/users/{userId}/sip_plans/{sipId}": {
+      "schema": { "$ref": "#/entities/SipPlan" },
+      "description": "User SIP plans."
+    },
+    "/users/{userId}/recurring_transactions/{recurringId}": {
+      "schema": { "$ref": "#/entities/RecurringTransaction" },
+      "description": "User recurring income and expense templates."
+    },
+    "/users/{userId}/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/NotificationItem" },
+      "description": "User notification center records."
+    }
+  }
+}

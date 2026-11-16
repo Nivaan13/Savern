@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="savernBg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#101827" />
+      <stop offset="100%" stop-color="#080D16" />
+    </linearGradient>
+    <linearGradient id="savernAccent" x1="112" y1="390" x2="400" y2="122" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#24D6A0" />
+      <stop offset="100%" stop-color="#39A0ED" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#savernBg)" />
+  <rect x="20" y="20" width="472" height="472" rx="96" stroke="#273449" stroke-width="8" />
+  <path d="M132 316L216 232L272 288L380 172" stroke="url(#savernAccent)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M312 172H380V240" stroke="#24D6A0" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M132 368H380" stroke="#273449" stroke-width="20" stroke-linecap="round" />
+</svg>

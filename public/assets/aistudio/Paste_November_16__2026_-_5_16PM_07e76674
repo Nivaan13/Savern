@@ -1,0 +1,1815 @@
+# MASTER DEVELOPMENT PROMPT: SAVERN
+## Complete Personal Finance Management Web Application
+
+You are an elite full-stack software engineer, senior UI/UX designer, fintech product architect, database engineer, cybersecurity specialist, and software tester.
+
+Your task is to DESIGN, DEVELOP, and IMPLEMENT a complete, production-quality personal finance management web application called **SAVERN**.
+
+Do not create a simple landing page, static dashboard, UI prototype, or collection of disconnected screens.
+
+Build a real, functional, responsive, data-driven finance application with working navigation, forms, calculations, charts, reports, local data storage, cloud synchronization, notifications, and all the features described below.
+
+Think like a team building a serious fintech product.
+
+---
+
+# PART 1: PRODUCT IDENTITY
+
+## 1.1 Application name
+
+**SAVERN**
+
+Use this exact brand name everywhere in the application.
+
+Do not use the previous name SpendWise anywhere.
+
+## 1.2 Tagline
+
+**"Your Money. Your Goals. Your Control."**
+
+## 1.3 Product vision
+
+Savern is an all-in-one personal finance management platform that helps individuals understand, organize, monitor, and improve their financial lives.
+
+The application should allow users to:
+
+- Track every rupee they earn and spend.
+- Monitor their current financial balance.
+- Understand where their money goes.
+- Compare their monthly expenses.
+- Manage loans, borrowed money, and EMI payments.
+- Monitor medical insurance and reimbursement claims.
+- Track mutual funds and SIP investments.
+- Create savings goals for things they dream of purchasing.
+- Set monthly and category-wise budgets.
+- Receive reminders about expenses and upcoming payments.
+- Generate detailed financial reports.
+- Access their financial information offline.
+- Synchronize their financial records securely across devices.
+
+Savern should feel like a combination of a professional banking dashboard, expense tracker, investment tracker, budgeting application, and personal financial assistant.
+
+## 1.4 Target users
+
+Build the application for:
+
+- Students.
+- Salaried employees.
+- Freelancers.
+- Business owners.
+- Families.
+- Individuals managing personal finances.
+
+The application should be easy enough for a beginner and powerful enough for someone managing multiple financial accounts, loans, investments, and savings goals.
+
+## 1.5 Regional settings
+
+Use these default settings:
+
+- Country: India.
+- Currency: INR (₹).
+- Number formatting: Indian numbering system.
+- Example: ₹1,00,000.
+- Default timezone: Asia/Kolkata.
+- Date format: DD MMM YYYY.
+- Financial year: April to March.
+- Language: English.
+
+Allow users to change their currency, timezone, and preferred settings later.
+
+---
+
+# PART 2: TECHNOLOGY AND ARCHITECTURE
+
+## 2.1 Frontend
+
+Use:
+
+- React.
+- TypeScript.
+- Tailwind CSS.
+- Lucide React icons.
+- Recharts for data visualization.
+- React Router.
+- Reusable component architecture.
+
+## 2.2 Backend
+
+Use Firebase where supported:
+
+- Firebase Authentication.
+- Cloud Firestore.
+- Cloud Functions where necessary.
+- Firebase Cloud Messaging for supported push notifications.
+- Firebase Hosting if appropriate.
+
+Use a secure equivalent if the development environment provides a different integrated backend.
+
+## 2.3 Offline storage
+
+Implement:
+
+- IndexedDB for structured local storage.
+- Service worker for application caching.
+- Offline-first data architecture.
+- Synchronization queue for pending changes.
+
+The application must remain usable without an internet connection after its first successful loading.
+
+Users should be able to add, edit, view, and delete transactions while offline.
+
+When internet connectivity returns, synchronize pending changes automatically.
+
+## 2.4 Progressive Web App
+
+Make Savern installable as a Progressive Web App.
+
+Include:
+
+- Web app manifest.
+- Application icons.
+- Service worker.
+- Install prompt.
+- Offline fallback.
+- Responsive layouts.
+- Loading screen.
+
+It should behave like an application when installed on a mobile device.
+
+## 2.5 Code quality
+
+Use reusable components, type-safe models, centralized calculations, validation utilities, proper error handling, loading states, empty states, confirmation dialogs, and accessible controls.
+
+Do not place the entire application in one giant component.
+
+---
+
+# PART 3: DESIGN SYSTEM AND VISUAL IDENTITY
+
+## 3.1 Design direction
+
+Savern must have a premium, modern, professional DARK-MODE-ONLY interface.
+
+Do not create a light mode.
+
+The design should combine the visual quality of modern fintech applications with a clean, sophisticated dashboard.
+
+Create an original visual identity for Savern. Do not copy another company's branding.
+
+## 3.2 Color palette
+
+Use the following color direction:
+
+- Main background: #080D16.
+- Secondary background: #101827.
+- Card background: #151F30.
+- Elevated card: #1B2940.
+- Primary accent: #24D6A0.
+- Secondary accent: #39A0ED.
+- Text primary: #F5F7FA.
+- Text secondary: #94A3B8.
+- Positive values: #28C997.
+- Negative values: #F16C78.
+- Warning: #F6B94A.
+- Borders: #273449.
+
+Use green for positive financial movement, red for expenses or negative financial movement, and blue for neutral information.
+
+Maintain sufficient contrast and avoid excessive glowing effects.
+
+## 3.3 Typography
+
+Use a modern sans-serif font such as Inter.
+
+Use a consistent typography hierarchy with large page titles, clear section headings, medium-weight card headings, readable body text, smaller secondary labels, and tabular numbers for financial figures.
+
+## 3.4 Brand identity
+
+Create a distinctive Savern logo.
+
+The logo should communicate:
+
+- Financial growth.
+- Smart money management.
+- Savings.
+- Trust.
+- Progress.
+
+Use a clean, minimal symbol combined with the word SAVERN.
+
+Create a consistent brand identity across:
+
+- Login screen.
+- Sidebar.
+- Dashboard.
+- Loading screen.
+- Notifications.
+- PDF reports.
+- Application icon.
+
+## 3.5 Visual components
+
+Create reusable:
+
+- Financial summary cards.
+- Charts.
+- Progress bars.
+- Data tables.
+- Transaction lists.
+- Date selectors.
+- Search fields.
+- Dropdown menus.
+- Modal dialogs.
+- Sidebars.
+- Notification panels.
+- Confirmation dialogs.
+- Empty-state illustrations.
+- Toast notifications.
+
+Use subtle animations for transitions, loading, hover effects, and progress indicators.
+
+## 3.6 Responsive design
+
+Support desktop computers, laptops, tablets, and mobile phones.
+
+Desktop should use a fixed left sidebar and spacious main dashboard.
+
+Mobile should use compact navigation, responsive cards, collapsible menus, and mobile-friendly forms.
+
+All financial tables must remain usable on smaller screens.
+
+---
+
+# PART 4: APPLICATION NAVIGATION
+
+Create a professional application layout.
+
+## 4.1 Sidebar navigation
+
+Include:
+
+1. Overview.
+2. Transactions.
+3. Accounts.
+4. Budgets.
+5. Savings Goals.
+6. Loans & EMI.
+7. Medical Claims.
+8. Investments.
+9. Reports.
+10. Calendar.
+11. Notifications.
+12. Settings.
+
+At the bottom:
+
+- User profile.
+- Account settings.
+- Help and support.
+- Logout.
+
+Display the Savern logo at the top.
+
+Use suitable Lucide icons.
+
+Highlight the active navigation item.
+
+## 4.2 Top navigation bar
+
+Include:
+
+- Savern logo where appropriate.
+- Current page title.
+- Global search.
+- Current date.
+- Notification icon.
+- Profile avatar.
+- Quick Add button.
+
+The Quick Add button should provide shortcuts to:
+
+- Add Expense.
+- Add Income.
+- Transfer Money.
+- Add Loan.
+- Add Savings Goal.
+
+---
+
+# PART 5: AUTHENTICATION AND USER ONBOARDING
+
+Create a complete authentication experience.
+
+## 5.1 Login page
+
+Include:
+
+- Email address.
+- Password.
+- Show/hide password.
+- Remember session.
+- Forgot password.
+- Login button.
+- Google sign-in if configured.
+- Link to registration.
+
+## 5.2 Registration
+
+Collect:
+
+- Full name.
+- Email.
+- Password.
+- Confirm password.
+- Agreement to terms.
+
+Validate all fields.
+
+## 5.3 First-time onboarding
+
+After registration, show a setup wizard.
+
+Step 1: Welcome to Savern.
+
+Step 2: Enter opening balance.
+
+Step 3: Select preferred currency.
+
+Step 4: Choose monthly income, if applicable.
+
+Step 5: Set initial monthly spending budget.
+
+Step 6: Select timezone.
+
+Step 7: Configure daily expense reminder.
+
+Step 8: Finish setup.
+
+Allow users to skip optional steps.
+
+Explain that the opening balance is the amount available at the beginning of tracking, not new income.
+
+---
+
+# PART 6: MAIN DASHBOARD
+
+This is the most important page.
+
+It should provide a complete overview of the user's financial situation.
+
+## 6.1 Welcome header
+
+Display:
+
+"Good morning, [User Name]"
+
+Use an appropriate greeting based on the user's local time.
+
+Display today's date.
+
+Include a quick-add transaction button.
+
+## 6.2 Main balance card
+
+Create a large premium balance card.
+
+Display:
+
+- Total available balance.
+- Total cash balance.
+- Total bank balance.
+- Total income this month.
+- Total expenses this month.
+- Net cash flow.
+
+Allow the user to hide or reveal financial amounts.
+
+Allow multiple manually tracked accounts.
+
+Make it clear that the displayed balance is based on user-entered data unless a real financial integration has been connected.
+
+## 6.3 Financial summary cards
+
+Create cards for:
+
+1. Total Income.
+2. Total Expenses.
+3. Remaining Budget.
+4. Total Savings.
+5. Total Outstanding Loans.
+6. Total Investments.
+
+Each card should contain the amount, comparison with previous month where meaningful, percentage change, relevant icon, and a small trend visualization.
+
+## 6.4 Spending overview
+
+Display a monthly spending chart.
+
+Allow:
+
+- Weekly view.
+- Monthly view.
+- Yearly view.
+
+Show expenses using a bar or area chart.
+
+Add an income-versus-expense comparison.
+
+## 6.5 Expense category breakdown
+
+Create a donut chart showing spending categories.
+
+Suggested categories:
+
+- Food.
+- Groceries.
+- Transport.
+- Shopping.
+- Education.
+- Entertainment.
+- Medical.
+- Bills.
+- Rent.
+- Travel.
+- Personal care.
+- Other.
+
+Show category name, amount, percentage of total spending, and category color.
+
+Allow clicking a category to view its transactions.
+
+## 6.6 Recent transactions
+
+Display the latest 5 to 10 transactions.
+
+Each transaction should show:
+
+- Name.
+- Category.
+- Date.
+- Account.
+- Amount.
+- Income or expense indicator.
+
+Add a View All button.
+
+## 6.7 Upcoming payments
+
+Display:
+
+- Upcoming EMI payments.
+- Loan repayment dates.
+- SIP dates.
+- Other scheduled payments.
+
+Show the amount and due date.
+
+## 6.8 Savings goals preview
+
+Display active savings goals with progress bars and remaining amounts.
+
+## 6.9 Financial insights
+
+Generate intelligent insights using actual user data.
+
+Examples:
+
+"You spent 18% less than last month."
+
+"Your food expenses increased by 12%."
+
+"You have used 75% of your monthly budget."
+
+"Your savings goal is 60% complete."
+
+"Your upcoming EMI payment is due in 3 days."
+
+Never display fabricated statistics.
+
+---
+
+# PART 7: TRANSACTION MANAGEMENT
+
+Build a complete transaction management system.
+
+## 7.1 Add transaction
+
+Create a beautiful modal or dedicated form.
+
+Fields:
+
+- Transaction type: Income or Expense.
+- Amount.
+- Description.
+- Category.
+- Account.
+- Date.
+- Time.
+- Payment method.
+- Optional notes.
+- Optional tags.
+
+Payment methods:
+
+- Cash.
+- UPI.
+- Debit card.
+- Credit card.
+- Bank transfer.
+- Other.
+
+## 7.2 Transaction validation
+
+- Amount must be greater than zero.
+- Category must be selected.
+- Account must be selected.
+- Date must be valid.
+- Required fields must not be empty.
+
+## 7.3 Transaction actions
+
+Users must be able to:
+
+- Add transactions.
+- Edit transactions.
+- Delete transactions.
+- Duplicate transactions.
+- Search transactions.
+- Filter by category.
+- Filter by account.
+- Filter by transaction type.
+- Filter by date range.
+- Sort by amount.
+- Sort by date.
+
+Ask for confirmation before deleting.
+
+## 7.4 Recurring transactions
+
+Allow recurring income and expenses.
+
+Frequency:
+
+- Daily.
+- Weekly.
+- Monthly.
+- Yearly.
+- Custom interval.
+
+Show the next expected transaction date.
+
+Do not silently create duplicate transactions.
+
+---
+
+# PART 8: ACCOUNTS AND BALANCE MANAGEMENT
+
+Allow users to manage multiple manually tracked accounts.
+
+Each account should include:
+
+- Account name.
+- Account type.
+- Opening balance.
+- Current calculated balance.
+- Currency.
+- Creation date.
+- Optional description.
+
+Account types:
+
+- Cash.
+- Savings.
+- Current account.
+- Other.
+
+Implement transfers between accounts.
+
+Transfers must reduce the source balance and increase the destination balance without counting as income or expenses.
+
+Maintain account transaction history.
+
+Provide a balance reconciliation feature where users can compare actual and calculated balances and enter an adjustment with a recorded reason.
+
+Never silently modify transaction history.
+
+---
+
+# PART 9: MONTHLY COMPARISON ENGINE
+
+This is a signature Savern feature.
+
+Compare the current month against the previous month.
+
+Example:
+
+Previous month expenses: ₹20,000.
+
+Current month expenses: ₹15,000.
+
+Result:
+
+"You spent 25% less than last month."
+
+Formula:
+
+Percentage change = ((Current Month - Previous Month) / Previous Month) × 100.
+
+Handle zero previous-month spending safely.
+
+Compare:
+
+- Total expenses.
+- Food.
+- Shopping.
+- Travel.
+- Education.
+- Medical.
+- Bills.
+- Other categories.
+
+Create:
+
+- Side-by-side monthly bars.
+- Category comparison chart.
+- Percentage change labels.
+- Trend indicators.
+
+When the current month is incomplete, clearly identify month-to-date comparisons and use equivalent periods where appropriate.
+
+Never mislead users with incomplete-month comparisons.
+
+---
+
+# PART 10: BUDGET MANAGEMENT
+
+Build a detailed budgeting system.
+
+## 10.1 Monthly budget
+
+Users can set a total monthly expense budget.
+
+Example:
+
+Monthly budget: ₹25,000.
+
+Spent: ₹15,000.
+
+Remaining: ₹10,000.
+
+Budget used: 60%.
+
+## 10.2 Category budgets
+
+Allow separate budgets for food, shopping, travel, education, entertainment, medical, bills, and custom categories.
+
+## 10.3 Budget alerts
+
+Support configurable thresholds:
+
+- 50% used.
+- 75% used.
+- 90% used.
+- 100% used.
+
+Display alerts when a threshold is reached.
+
+Prevent repeated alerts for the same threshold unless explicitly configured otherwise.
+
+## 10.4 Budget history
+
+Allow users to review previous budgets and actual expenses.
+
+Display budgeted amount, actual amount, difference, and percentage used.
+
+---
+
+# PART 11: DREAM SAVINGS AND GOAL TRACKER
+
+This is another signature Savern feature.
+
+Users should be able to create savings goals for anything they want to purchase or save for.
+
+Examples:
+
+- Laptop.
+- Smartphone.
+- Bicycle.
+- Vehicle.
+- Education.
+- Vacation.
+- Emergency fund.
+- Custom goals.
+
+## 11.1 Create goal
+
+Fields:
+
+- Goal name.
+- Target amount.
+- Initial saved amount.
+- Target date.
+- Goal category.
+- Description.
+- Optional image.
+- Priority.
+
+## 11.2 Goal dashboard
+
+Display:
+
+- Goal name.
+- Target amount.
+- Saved amount.
+- Remaining amount.
+- Progress percentage.
+- Target date.
+- Estimated completion date.
+
+Example:
+
+Goal: Buy a laptop.
+
+Target: ₹60,000.
+
+Saved: ₹20,000.
+
+Remaining: ₹40,000.
+
+Progress: 33.33%.
+
+## 11.3 Savings contributions
+
+Allow users to add money to a goal, remove a contribution, edit a contribution, and view contribution history.
+
+Every change must be recorded.
+
+## 11.4 Monthly savings recommendations
+
+Calculate the monthly savings amount required to achieve the goal by the target date.
+
+Example:
+
+Remaining: ₹40,000.
+
+Time remaining: 8 months.
+
+Required monthly savings: ₹5,000.
+
+If the target date has passed, show an appropriate message.
+
+## 11.5 Multiple goals
+
+Support unlimited goals.
+
+Show all active goals and their total remaining requirements.
+
+Do not count the same money twice when contributions are associated with an account.
+
+---
+
+# PART 12: LOAN AND BORROWING MANAGEMENT
+
+Build a comprehensive loan management section.
+
+Separate:
+
+1. Money borrowed by the user.
+2. Money lent by the user.
+3. Formal loans.
+4. EMI-based loans.
+
+## 12.1 Borrowed money
+
+Fields:
+
+- Lender name.
+- Original amount.
+- Borrowed date.
+- Interest rate, if applicable.
+- Due date.
+- Repayment frequency.
+- Notes.
+
+## 12.2 Money lent
+
+Fields:
+
+- Borrower's name.
+- Amount lent.
+- Date lent.
+- Expected repayment date.
+- Amount received.
+- Remaining amount.
+- Notes.
+
+## 12.3 Loan tracking
+
+Display:
+
+- Original principal.
+- Amount repaid.
+- Outstanding principal.
+- Interest information.
+- Next payment date.
+- Payment history.
+
+## 12.4 Payment records
+
+Users must be able to record repayments.
+
+Every repayment should update the outstanding balance correctly.
+
+Allow partial payments.
+
+Prevent payments greater than outstanding amounts unless explicitly handled as an advance or overpayment.
+
+## 12.5 Loan dashboard
+
+Display:
+
+- Total borrowed.
+- Total lent.
+- Total outstanding debt.
+- Total money owed to the user.
+- Upcoming repayments.
+
+Use different colors for money owed by the user and money owed to the user.
+
+---
+
+# PART 13: EMI MANAGEMENT AND REMINDERS
+
+Create a dedicated EMI management section.
+
+## 13.1 Add EMI
+
+Fields:
+
+- Loan name.
+- Lender or institution.
+- Principal amount.
+- Interest rate.
+- EMI amount.
+- Loan start date.
+- Total tenure.
+- EMI frequency.
+- Payment due day.
+- Next payment date.
+- Number of installments paid.
+- Number of installments remaining.
+
+## 13.2 EMI dashboard
+
+Display:
+
+- Total active EMIs.
+- Monthly EMI obligations.
+- Total principal outstanding.
+- Next EMI payment.
+- Upcoming EMI calendar.
+
+## 13.3 Payment reminders
+
+Users should be able to configure:
+
+- 7 days before.
+- 3 days before.
+- 1 day before.
+- On due date.
+
+Allow custom reminder schedules.
+
+## 13.4 Payment history
+
+Each payment must contain date, amount, payment status, account used, and reference or notes.
+
+Possible statuses:
+
+- Upcoming.
+- Paid.
+- Overdue.
+- Skipped.
+
+## 13.5 Loan calculations
+
+Where sufficient information exists, calculate estimated EMI using the standard reducing-balance formula.
+
+Clearly distinguish estimates from actual lender statements.
+
+Do not assume all loans use the same interest calculation method.
+
+---
+
+# PART 14: MEDICAL INSURANCE AND CLAIM MANAGER
+
+Create a dedicated Medical Claim Manager.
+
+Insurance coverage and claim reimbursement are different financial concepts. Never mix them.
+
+## 14.1 Insurance policy creation
+
+Fields:
+
+- Insurance company.
+- Policy name.
+- Policy number.
+- Total sum insured.
+- Policy start date.
+- Policy expiry date.
+- Premium amount.
+- Renewal date.
+- Notes.
+
+Policy numbers should be treated as sensitive information.
+
+## 14.2 Medical claims
+
+Allow users to create claims.
+
+Fields:
+
+- Claim title.
+- Policy.
+- Hospital or provider.
+- Treatment date.
+- Claim submission date.
+- Medical expense amount.
+- Amount claimed.
+- Amount approved.
+- Amount received.
+- Claim status.
+- Claim reference.
+- Notes.
+
+Statuses:
+
+- Draft.
+- Submitted.
+- Under review.
+- Approved.
+- Partially approved.
+- Rejected.
+- Reimbursement received.
+
+## 14.3 Insurance overview
+
+Display:
+
+- Total coverage.
+- Approved claims counted against coverage.
+- Remaining coverage.
+- Total submitted claims.
+- Pending claims.
+- Approved claims.
+- Amount received.
+- Amount still receivable.
+
+## 14.4 Claim calculation
+
+Coverage remaining should be calculated based on the policy's actual coverage rules and amount counted against the sum insured.
+
+Pending claims must not automatically reduce available coverage unless the policy accounting method requires it.
+
+Approved but unpaid claims must remain separate from reimbursements already received.
+
+## 14.5 Policy reminders
+
+Support renewal reminders, expiry reminders, and pending claim follow-ups.
+
+Allow users to attach documents if supported securely.
+
+---
+
+# PART 15: MUTUAL FUNDS AND SIP TRACKER
+
+Create a professional investment tracking section.
+
+This is a tracking and record-keeping tool, not a brokerage or investment execution platform.
+
+## 15.1 Mutual fund portfolio
+
+Allow users to manually add investments.
+
+Fields:
+
+- Fund name.
+- AMC.
+- Scheme category.
+- Investment date.
+- Invested amount.
+- Units purchased.
+- NAV at purchase.
+- Current NAV.
+- Notes.
+
+## 15.2 Portfolio dashboard
+
+Display:
+
+- Total invested amount.
+- Current portfolio value.
+- Unrealized profit/loss.
+- Absolute return percentage.
+- Fund-wise distribution.
+- Investment history.
+
+Current value = Units × Current NAV.
+
+Profit/loss = Current Value - Invested Amount.
+
+## 15.3 SIP management
+
+Fields:
+
+- SIP name.
+- Mutual fund.
+- Monthly SIP amount.
+- SIP start date.
+- SIP frequency.
+- Installment date.
+- Total installments.
+- Completed installments.
+- Next installment date.
+- Active or paused status.
+
+## 15.4 SIP dashboard
+
+Display:
+
+- Total active SIPs.
+- Monthly SIP commitment.
+- Total invested through SIP.
+- Upcoming SIP installments.
+- SIP history.
+
+## 15.5 SIP reminders
+
+Allow reminders before each SIP date.
+
+Do not automatically initiate investments or debit accounts.
+
+## 15.6 Investment disclaimers
+
+Display clear information that manually entered NAVs may be outdated and portfolio estimates are not investment advice.
+
+Do not fabricate live NAV data.
+
+Allow future integration with reliable market-data providers if properly configured.
+
+---
+
+# PART 16: REPORTS AND ANALYTICS
+
+Build a complete financial reporting module.
+
+## 16.1 Report filters
+
+Allow:
+
+- Today.
+- Yesterday.
+- Last 7 days.
+- Last 30 days.
+- Current month.
+- Previous month.
+- Current financial year.
+- Previous financial year.
+- Custom date range.
+
+## 16.2 Report categories
+
+Generate reports for income, expenses, savings, cash flow, budget performance, loan repayments, outstanding debts, medical claims, mutual funds, and SIP investments.
+
+## 16.3 Charts
+
+Include:
+
+- Income vs expenses.
+- Expense trend.
+- Category distribution.
+- Monthly comparison.
+- Savings growth.
+- Investment performance.
+- Budget consumption.
+
+## 16.4 PDF export
+
+Allow users to export reports as PDFs.
+
+Include:
+
+- Savern branding.
+- Report title.
+- Selected date range.
+- Financial summaries.
+- Charts where supported.
+- Transaction details.
+- Report generation date.
+
+## 16.5 CSV export
+
+Allow transaction data to be exported as CSV.
+
+---
+
+# PART 17: SMART REMINDER SYSTEM
+
+Build a dedicated notification and reminder center.
+
+## 17.1 Daily expense reminder
+
+Default reminder time: 22:00.
+
+Default reminder message:
+
+"Time to update your expenses! Record today's spending to keep your Savern reports accurate."
+
+Allow users to enable or disable the reminder, change the reminder time, select reminder days, change timezone, and snooze reminders.
+
+## 17.2 EMI reminders
+
+Notify users about upcoming EMI payments.
+
+## 17.3 Loan reminders
+
+Notify users about repayment deadlines.
+
+## 17.4 SIP reminders
+
+Notify users about upcoming investment installments.
+
+## 17.5 Budget alerts
+
+Notify users when budget thresholds are reached.
+
+## 17.6 Savings reminders
+
+Provide optional progress reminders for active savings goals.
+
+## 17.7 Notification implementation
+
+Use the browser Notification API where supported.
+
+Request permission only after explaining why notifications are needed.
+
+Use service workers and a properly configured push-notification backend for notifications when the browser is not actively open.
+
+Do not falsely promise that ordinary browser timers will run at 22:00 when the application is closed.
+
+Provide an in-app reminder center as a fallback.
+
+---
+
+# PART 18: CALENDAR
+
+Create a financial calendar.
+
+Show:
+
+- EMI due dates.
+- Loan repayments.
+- SIP dates.
+- Insurance renewal dates.
+- Savings milestones.
+- Recurring transactions.
+
+Use different colors or icons for each event type.
+
+Allow users to switch between monthly calendar, weekly calendar, and agenda list.
+
+Clicking an event should open its details.
+
+---
+
+# PART 19: GLOBAL SEARCH
+
+Implement application-wide search across:
+
+- Transactions.
+- Categories.
+- Accounts.
+- Loans.
+- EMI records.
+- Medical claims.
+- Savings goals.
+- Investments.
+
+Include relevant filters.
+
+Show matching records and allow navigation to their details.
+
+---
+
+# PART 20: SETTINGS
+
+Build a complete settings page.
+
+## Profile
+
+- Name.
+- Email.
+- Profile image.
+- Personal details.
+
+## Preferences
+
+- Currency.
+- Timezone.
+- Date format.
+- Number format.
+
+## Notifications
+
+- Daily reminders.
+- EMI reminders.
+- Loan reminders.
+- SIP reminders.
+- Budget alerts.
+
+## Appearance
+
+- Dark mode only.
+- Compact or comfortable layout.
+- Chart preferences.
+
+Do not introduce a light mode.
+
+## Data and privacy
+
+- Export data.
+- Download backup.
+- Synchronization settings.
+- Manage connected devices.
+- Delete account.
+- Delete user data.
+
+## Security
+
+- Change password.
+- Logout.
+- Session management.
+- App lock or re-authentication where supported.
+
+---
+
+# PART 21: OFFLINE-FIRST FUNCTIONALITY
+
+Offline support is mandatory.
+
+Savern should continue working when the user has no internet connection after initial loading.
+
+## 21.1 Local data
+
+Store data locally using IndexedDB.
+
+Support offline operations for:
+
+- Creating transactions.
+- Editing transactions.
+- Deleting transactions.
+- Viewing reports based on cached data.
+- Updating savings goals.
+- Recording loan payments.
+- Updating budgets.
+- Viewing previously synchronized records.
+
+## 21.2 Sync queue
+
+Every offline modification should be recorded in a synchronization queue.
+
+Each change should have:
+
+- Unique operation ID.
+- Entity ID.
+- Operation type.
+- Timestamp.
+- User ID.
+- Sync status.
+- Version information.
+
+## 21.3 Synchronization
+
+When connectivity returns:
+
+1. Detect network connection.
+2. Identify pending local operations.
+3. Authenticate the user.
+4. Upload pending changes.
+5. Resolve conflicts.
+6. Download remote changes.
+7. Update local storage.
+8. Mark successful operations as synchronized.
+
+## 21.4 Conflict handling
+
+Use stable record IDs and version metadata.
+
+Do not blindly overwrite financial records.
+
+For conflicting edits:
+
+- Preserve transaction history.
+- Use a clear conflict resolution strategy.
+- Avoid duplicate payments.
+- Avoid duplicate transaction creation.
+- Allow manual review when necessary.
+
+## 21.5 Sync indicator
+
+Display:
+
+- Online and synchronized.
+- Synchronizing.
+- Offline.
+- Pending changes.
+- Sync error.
+
+Never display "Synced" before synchronization has actually completed.
+
+## 21.6 Multi-device support
+
+When a user logs into another device, retrieve their authorized cloud records and synchronize them with local storage.
+
+Never expose one user's financial information to another user.
+
+---
+
+# PART 22: DATABASE SCHEMA
+
+Create a well-structured database with appropriate relationships, indexes, validation, and security rules.
+
+Suggested collections or tables:
+
+1. users.
+2. profiles.
+3. accounts.
+4. transactions.
+5. categories.
+6. budgets.
+7. budget_alerts.
+8. savings_goals.
+9. savings_contributions.
+10. loans.
+11. loan_payments.
+12. emi_plans.
+13. emi_payments.
+14. insurance_policies.
+15. medical_claims.
+16. claim_documents.
+17. investments.
+18. sip_plans.
+19. sip_transactions.
+20. recurring_transactions.
+21. notifications.
+22. user_preferences.
+23. sync_metadata.
+
+Every financial record should include appropriate metadata:
+
+- ID.
+- User ID.
+- Created timestamp.
+- Updated timestamp.
+- Record version.
+- Optional deletion timestamp.
+
+Use appropriate decimal or integer minor-unit representations for currency calculations.
+
+Do not store passwords in application tables.
+
+---
+
+# PART 23: FINANCIAL CALCULATION ENGINE
+
+Create a centralized financial calculation utility.
+
+Do not duplicate important formulas across components.
+
+## Available balance
+
+Opening balance + Income - Expenses + Incoming transfers - Outgoing transfers.
+
+Do not count internal transfers as income or expenses.
+
+## Net cash flow
+
+Total income - Total expenses.
+
+## Savings
+
+Income - Expenses.
+
+Distinguish calculated savings from money actually allocated to savings goals.
+
+## Monthly expense change
+
+((Current expenses - Previous expenses) / Previous expenses) × 100.
+
+## Goal progress
+
+(Saved amount / Target amount) × 100.
+
+## Remaining goal amount
+
+Target amount - Saved amount.
+
+Handle completed or exceeded goals separately.
+
+## Loan balance
+
+Original principal - Principal repaid.
+
+Handle interest and fees separately.
+
+## Investment performance
+
+Profit/loss = Current portfolio value - Invested amount.
+
+Return percentage = (Profit/loss / Invested amount) × 100.
+
+Handle zero investment values safely.
+
+## Insurance
+
+Track sum insured, amount consumed against coverage, pending claims, approved claims, and amount reimbursed.
+
+Do not treat every pending claim as an actual reimbursement.
+
+## General requirements
+
+- Avoid division by zero.
+- Handle missing information.
+- Handle refunds.
+- Handle partial payments.
+- Handle deleted transactions.
+- Handle date boundaries.
+- Use consistent timezone rules.
+- Ensure totals reconcile across dashboard and reports.
+
+---
+
+# PART 24: SECURITY AND PRIVACY
+
+Savern contains sensitive financial records.
+
+Implement:
+
+- Secure authentication.
+- User-specific database access rules.
+- HTTPS in deployment.
+- Input validation.
+- Output escaping.
+- Protection against common web vulnerabilities.
+- Secure session management.
+- No hardcoded API secrets.
+- No exposed private service keys.
+- No unauthorized cross-user data access.
+- Safe handling of sensitive policy details.
+
+Use environment variables for configuration.
+
+Never include secrets in frontend code.
+
+Do not request bank passwords, UPI PINs, card PINs, or other authentication secrets.
+
+Do not make financial transactions or transfer real money.
+
+Users must remain in control of manually entered financial records.
+
+Include clear account deletion and data export procedures.
+
+---
+
+# PART 25: DEMO DATA
+
+Create a demo mode so users can explore Savern before entering their own data.
+
+Use clearly identified fictional data.
+
+Example:
+
+Opening balance: ₹50,000.
+
+Monthly income: ₹30,000.
+
+Monthly expenses: ₹12,000.
+
+Monthly budget: ₹20,000.
+
+Savings goal: ₹60,000.
+
+Amount saved: ₹20,000.
+
+Active EMI: ₹4,000 per month.
+
+Mutual fund investment: ₹25,000.
+
+SIP: ₹2,000 per month.
+
+Create believable demo transactions and charts.
+
+Demo data must never be mixed with actual authenticated user data.
+
+Provide a way to reset demo data.
+
+---
+
+# PART 26: EMPTY STATES AND USER EXPERIENCE
+
+Every page must handle situations where no records exist.
+
+Examples:
+
+No transactions:
+
+"You haven't recorded any transactions yet. Start by adding your first income or expense."
+
+No savings goals:
+
+"Every big achievement starts with a goal. Create your first savings goal."
+
+No loans:
+
+"You're all caught up. No loan records have been added."
+
+No investments:
+
+"Your investment portfolio is waiting to be set up."
+
+Include helpful actions in empty states.
+
+Avoid blank pages, broken charts, and confusing error messages.
+
+---
+
+# PART 27: PERFORMANCE AND ACCESSIBILITY
+
+The application must:
+
+- Load quickly.
+- Avoid unnecessary re-renders.
+- Use pagination for large transaction lists.
+- Lazy-load heavy sections where useful.
+- Optimize chart rendering.
+- Support keyboard navigation.
+- Use accessible labels.
+- Provide visible focus states.
+- Support screen readers.
+- Handle slow network connections.
+- Avoid unnecessary dependencies.
+
+Use skeleton loaders instead of sudden layout shifts.
+
+---
+
+# PART 28: TESTING AND QUALITY ASSURANCE
+
+Test the major workflows.
+
+## Transaction tests
+
+- Add an expense.
+- Add income.
+- Edit a transaction.
+- Delete a transaction.
+- Refund handling.
+- Account balance updates.
+- Transfer handling.
+
+## Budget tests
+
+- Create budget.
+- Add expense.
+- Verify remaining budget.
+- Verify alert thresholds.
+
+## Savings tests
+
+- Create a goal.
+- Add contribution.
+- Remove contribution.
+- Verify progress.
+- Verify remaining amount.
+
+## Loan tests
+
+- Create loan.
+- Record repayment.
+- Verify outstanding balance.
+- Verify overdue status.
+
+## Medical claim tests
+
+- Create insurance policy.
+- Submit claim.
+- Approve claim.
+- Record reimbursement.
+- Verify remaining coverage.
+
+## Investment tests
+
+- Add mutual fund.
+- Update NAV.
+- Verify portfolio value.
+- Verify profit/loss.
+- Create SIP.
+
+## Offline tests
+
+- Turn off network.
+- Add transactions.
+- Edit records.
+- Reload application.
+- Restore network.
+- Verify synchronization.
+- Verify no duplicate records.
+
+## Authentication tests
+
+- Register.
+- Login.
+- Logout.
+- Reset password.
+- Access control.
+- User isolation.
+
+Do not claim a test passed unless it was actually executed successfully.
+
+---
+
+# PART 29: IMPLEMENTATION INSTRUCTIONS
+
+You must actually develop the application.
+
+Do not respond with only a development plan.
+
+Do not merely describe how the application could work.
+
+Do not create a static HTML mockup.
+
+Do not leave main buttons non-functional.
+
+Do not use placeholder links for navigation.
+
+Do not use fake calculations.
+
+Do not hardcode dashboard statistics as if they were actual user data.
+
+Do not create forms that cannot save information.
+
+Do not simulate successful cloud synchronization when no backend connection exists.
+
+## Development sequence
+
+### Stage 1: Project foundation
+
+- Create the project.
+- Configure React and TypeScript.
+- Configure styling.
+- Establish routing.
+- Create reusable UI components.
+- Create the dark design system.
+- Set up the application shell.
+- Add the Savern branding.
+
+### Stage 2: Core finance engine
+
+- Implement IndexedDB.
+- Implement account management.
+- Implement transactions.
+- Implement income and expense calculations.
+- Implement dashboard summaries.
+
+### Stage 3: Financial management
+
+- Budgets.
+- Monthly comparisons.
+- Savings goals.
+- Loans.
+- EMI.
+
+### Stage 4: Advanced finance
+
+- Medical claims.
+- Mutual funds.
+- SIP.
+- Reports.
+- Calendar.
+
+### Stage 5: Cloud and synchronization
+
+- Authentication.
+- Cloud database.
+- User access policies.
+- Sync queue.
+- Conflict handling.
+- Multi-device support.
+
+### Stage 6: Notifications
+
+- Daily expense reminder.
+- EMI reminders.
+- SIP reminders.
+- Budget alerts.
+- Notification center.
+
+### Stage 7: Quality and release
+
+- Testing.
+- Bug fixing.
+- Performance optimization.
+- Mobile responsiveness.
+- PWA support.
+- Deployment instructions.
+
+If the environment cannot implement everything in one generation, complete the foundation first, then implement the modules incrementally while keeping the application runnable.
+
+If a service requires external credentials, explain the required setup and provide an example environment configuration without real secrets.
+
+---
+
+# PART 30: FINAL PRODUCT REQUIREMENTS
+
+The final Savern application must have:
+
+- Premium dark-mode interface.
+- Responsive desktop and mobile layout.
+- Working authentication.
+- Functional dashboard.
+- Income and expense management.
+- Multiple account support.
+- Accurate financial balances.
+- Monthly spending comparison.
+- Category-wise expense analytics.
+- Budget tracking.
+- Dream savings goals.
+- Borrowing and lending management.
+- Loan and EMI tracking.
+- Medical insurance and claim tracking.
+- Mutual fund tracking.
+- SIP management.
+- Reports and exports.
+- Calendar.
+- Notification center.
+- 22:00 daily expense reminder.
+- Offline functionality.
+- Cloud synchronization.
+- Secure user-specific data.
+- PWA installation support.
+
+The interface must feel cohesive. Every module should use the same design language.
+
+The user should never feel like they are switching between unrelated applications.
+
+---
+
+# PART 31: HOW YOU SHOULD WORK
+
+Follow these principles throughout development.
+
+1. Think before implementing.
+2. Prioritize functionality over decorative effects.
+3. Use modular, maintainable code.
+4. Make all calculations consistent.
+5. Protect financial information.
+6. Validate every user input.
+7. Test every major workflow.
+8. Keep the application usable offline.
+9. Handle synchronization failures safely.
+10. Make the experience intuitive for non-technical users.
+
+When you finish the first development stage, show the working application and summarize what is actually implemented.
+
+Clearly distinguish between completed functionality, functionality still under development, and features requiring external configuration.
+
+Do not claim full production readiness without testing and deployment verification.
+
+# FINAL COMMAND
+
+Now begin building **SAVERN**.
+
+Start by creating the actual application, not another explanation or proposal.
+
+First deliver a beautiful, functional dark-mode application shell with:
+
+1. Sidebar navigation.
+2. Top navigation.
+3. Main financial dashboard.
+4. Balance card.
+5. Income and expense cards.
+6. Monthly expense chart.
+7. Category breakdown chart.
+8. Recent transactions.
+9. Savings goals preview.
+10. Upcoming payments.
+
+Then implement the underlying data models and working transaction functionality.
+
+Use realistic demo data initially, clearly separated from real user data.
+
+Keep the project organized so every additional module can be integrated without rebuilding the foundation.
+
+**The goal is to build SAVERN into a complete, trustworthy, offline-first personal finance management platform.**
+
+Do not stop at a visual prototype. Build the real product.

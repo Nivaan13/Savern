@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg-main: #080d16;
+    --bg-secondary: #101827;
+    --bg-card: #151f30;
+    --bg-elevated: #1b2940;
+    --accent-primary: #24d6a0;
+    --accent-secondary: #39a0ed;
+    --text-primary: #f5f7fa;
+    --text-secondary: #94a3b8;
+    --positive: #28c997;
+    --negative: #f16c78;
+    --warning: #f6b94a;
+    --border-subtle: #273449;
+  }
+
+  html,
+  body {
+    background-color: #080d16;
+    color: #f5f7fa;
+    font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.005em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  }
+
+  .font-mono-num {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #273449;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #364763;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-surface {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+}

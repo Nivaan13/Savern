@@ -1,0 +1,6 @@
+{
+  "name": "SAVERN",
+  "description": "Your Money. Your Goals. Your Control. Offline-first personal finance, budget, loan, EMI, medical claims, and mutual fund management platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
